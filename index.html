@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    form { max-width: 400px; margin: auto; }
+    label { display: block; margin-top: 10px; }
+    input, select, textarea { width: 100%; padding: 5px; margin-top: 5px; }
+    .gender, .buttons { display: flex; gap: 10px; margin-top: 5px; }
+  </style>
+
+  <script>
+    function validateForm() {
+      const form = document.forms["regForm"];
+      const gender = form["gender"].value;
+      const terms = form["terms"].checked;
+
+      if (!gender) {
+        alert("Please select gender.");
+        return false;
+      }
+
+      if (!terms) {
+        alert("You must accept the terms and conditions.");
+        return false;
+      }
+
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+  <h2>Registration Form</h2>
+  <form name="regForm" onsubmit="return validateForm()">
+    <label>First Name:
+      <input type="text" name="firstname" required>
+    </label>
+
+    <label>Last Name:
+      <input type="text" name="lastname" required>
+    </label>
+
+    <label>Date of Birth:
+      <input type="date" name="dob" required>
+    </label>
+
+    <label>Email:
+      <input type="email" name="email" required>
+    </label>
+
+    <label>Gender:</label>
+    <div class="gender">
+      <label><input type="radio" name="gender" value="male"> Male</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+    </div>
+
+    <label>Phone Number:
+      <input type="tel" name="phone" pattern="[0-9]{10}" required>
+    </label>
+
+    <label>Address:
+      <textarea name="address" rows="3" required></textarea>
+    </label>
+
+    <label>Branch:
+      <select name="branch" required>
+        <option value="">Select Branch</option>
+        <option value="cse">CSE</option>
+        <option value="ece">ECE</option>
+        <option value="eee">EEE</option>
+        <option value="mech">MECH</option>
+      </select>
+    </label>
+
+    <label>
+      <input type="checkbox" name="terms"> I accept the terms and conditions
+    </label>
+
+    <div class="buttons">
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+
+</body>
+</html>
